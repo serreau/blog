@@ -1,0 +1,15 @@
+<div class="row col-md-4"></div>
+	<div class="row col-md-4">
+		<div class="list-group">
+			<h2 class="list-group-item text-center ">Categories</h2>
+
+				<div ng-repeat="c in categories">
+					<div class="list-group-item text-center" >
+							<a class="badge" href="">delete</a>
+						<a href="#/articles/{{c.nom}}">{{c.nom}}</a>
+					</div>
+				</div>
+		</div>
+		<a href="#/"/>Retour</a>
+	</div>
+<div class="row col-md-4"></div>

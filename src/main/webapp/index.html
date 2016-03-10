@@ -1,0 +1,46 @@
+<!DOCTYPE html >
+<html ng-app="app">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Blog</title>
+		
+		<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+		
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/locale/fr.js"></script>
+		
+		<script type="text/javascript" src="https://code.angularjs.org/1.5.0/angular.min.js"></script>
+		<script type="text/javascript" src="https://code.angularjs.org/1.5.0/angular-route.js"></script>
+		<script type="text/javascript" src="https://code.angularjs.org/1.5.0/angular-resource.min.js"></script>
+		<script type="text/javascript" src="https://code.angularjs.org/1.5.0/i18n/angular-locale_fr-fr.js"></script>
+		
+		<script type="text/javascript" src="resources/js/angular/app.js"></script>
+		<script type="text/javascript" src="resources/js/angular/controller/MainController.js"></script>
+		<script type="text/javascript" src="resources/js/angular/controller/HomeController.js"></script>
+		<script type="text/javascript" src="resources/js/angular/controller/CategoryController.js"></script>
+		<script type="text/javascript" src="resources/js/angular/controller/ArticleListController.js"></script>
+		<script type="text/javascript" src="resources/js/angular/controller/ArticleDetailController.js"></script>
+		<script type="text/javascript" src="resources/js/angular/controller/ArticleNewController.js"></script>
+		<script type="text/javascript" src="resources/js/angular/controller/HeaderController.js"></script>
+		<script type="text/javascript" src="resources/js/angular/services/dataAccess.js"></script>
+	</head>
+	<body >
+	
+		<div ng-controller="HeaderController" class="row col-md-12" >
+			<div class="text-center">
+				<a href="#/" ><button class="btn btn-link"><h2>H</h2></button></a>
+			</div>
+			<div class="text-center">
+					<a href="#/article/new" ng-show="!connected"><button class="btn btn-success">Créer un article</button></a>
+					<a ng-click="connected=!connected" ng-show="!connected"><button class="btn btn-primary">Déconnexion</button></a>
+					<input type="text" placeholder="login" ng-show="connected" required>
+					<input type="password" placeholder="password" ng-show="connected" required>
+					<a ng-click="connected=!connected" ng-show="connected"><button class="btn btn-primary">Connexion</button></a>
+			</div>
+		</div>
+		<div ng-view></div>
+
+	</body>
+</html>

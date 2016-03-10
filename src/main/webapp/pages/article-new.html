@@ -1,0 +1,40 @@
+<div class="row col-md-4"></div>
+<form class="form-horizontal" name="inscriptionForm" novalidate>
+	<div class="row col-md-4 text-center">
+		<div class="form-group">
+			<h2 class="list-group-item text-center">
+				<input class="form-control" ng-model="article.nom" placeholder="Le titre de votre article" />
+			</h2>
+		</div>
+		<div class="form-group">
+			<div class="list-group-item text-center">
+				<textarea class="form-control" rows="3" ng-model="article.chapeau" placeholder="Le chapeau de votre article"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="list-group-item text-center">
+				<textarea class="form-control" rows="3" ng-model="article.contenu" placeholder="Le contenu de votre article"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="list-group-item text-center">
+				<select class="form-control" ng-model="article.categorie.id"> <!--  article.categorie.id-->
+					<option ng-repeat="categorie in categories" ng-value="categorie.id">{{categorie.nom}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="text-center">
+				<a type="submit" ng-click="addArticle(article)"><button class="btn btn-success">Publier</button></a>
+			</div>
+		</div>
+		<div class="text-right">
+			<a class="badge" ng-click="reset(article)">Reset</a>
+		</div>
+		<div class="text-left">
+			<a href="#/">Retour</a> 
+		</div>
+
+	</div>
+</form>
+<div class="row col-md-4"></div>

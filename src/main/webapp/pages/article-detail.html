@@ -1,0 +1,33 @@
+<div class="row col-md-4"></div>
+	<div class="row col-md-4">
+		<div class="list-group">
+			<h2 class="list-group-item text-center">{{article.nom}}</h2>
+			<div class="list-group-item text-center">{{article.dateCreation | date:"'le 'd' 'MMMM' 'yyyy"}}</div>
+			<div class="list-group-item text-center">{{article.chapeau}}</div>
+			<div class="list-group-item text-center">{{article.contenu}}</div>
+		</div>
+		<a href="#/articles/{{categoryName}}">Retour</a>
+		<a class="badge" href="#">delete</a>
+		
+		<div ng-repeat="c in commentaires">
+			<div>
+				<p>
+					<span>{{c.email}}</span>
+					<span>{{c.dateCreation | date:"' le 'd' 'MMMM' 'yyyy"}}</span>
+				</p>
+				<span>{{c.nom}}</span></br>
+				<p>{{c.texte}}</p>
+				<hr>
+			</div>
+		</div>
+		
+		<div class="text-center">
+			<form  novalidate>
+				<input type="text" ng-model="com.nom" placeholder="Le titre du commentaire." required></input></br>
+			    <textarea type="text" ng-model="com.texte" placeholder="Votre commentaire ici." required></textarea></br>
+			    <a type="submit" ng-click="addComment(com)"><button class="btn btn-success">Commenter</button></a>
+			</form>
+		</div>
+
+	</div>
+<div class="row col-md-4"></div>
