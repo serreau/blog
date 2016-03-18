@@ -1,31 +1,55 @@
 <div class="row col-md-4"></div>
-<form class="form-horizontal" name="inscriptionForm" novalidate>
+<form class="form-horizontal" name="inscriptionForm">
 	<div class="row col-md-4 text-center">
 		<div class="form-group">
-			<h2 class="list-group-item text-center">
-				<input class="form-control" ng-model="article.nom" placeholder="Le titre de votre article" />
-			</h2>
-		</div>
-		<div class="form-group">
-			<div class="list-group-item text-center">
-				<textarea class="form-control" rows="3" ng-model="article.chapeau" placeholder="Le chapeau de votre article"></textarea>
+			<div ng-class="{'list-group-item ' : true,
+							'has-warning': inscriptionForm.titre.$dirty && !registerForm.titre.$valid,
+							'has-success': inscriptionForm.titre.$valid}">
+				<input name="titre" type="text"
+					   ng-model="article.nom" 
+					   ng-minlength="4" ng-minlength="10" ng-required="true"
+					   placeholder="Ici, le titre." 
+					   class="form-control"/>
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="list-group-item text-center">
-				<textarea class="form-control" rows="3" ng-model="article.contenu" placeholder="Le contenu de votre article"></textarea>
+			<div ng-class="{'list-group-item ' : true,
+							'has-warning': inscriptionForm.chapeau.$dirty && !registerForm.chapeau.$valid,
+							'has-success': inscriptionForm.chapeau.$valid}">
+				<textarea name="chapeau" type="text"
+				 		  ng-model="article.chapeau"
+				 		  ng-minlength="10" ng-required="true"
+				 		  class="form-control" rows="3" placeholder="Ici, le chapeau.">
+				</textarea>
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="list-group-item text-center">
-				<select class="form-control" ng-model="article.categorie.id"> <!--  article.categorie.id-->
-					<option ng-repeat="categorie in categories" ng-value="categorie.id">{{categorie.nom}}</option>
+			<div ng-class="{'list-group-item ' : true,
+							'has-warning': inscriptionForm.contenu.$dirty && !registerForm.contenu.$valid,
+							'has-success': inscriptionForm.contenu.$valid}">
+				<textarea name="contenu" type="text"
+						  ng-model="article.contenu"
+						  ng-minlength="10" ng-required="true"
+						  class="form-control" rows="3" placeholder="Ici, votre article..">
+				</textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<div ng-class="{'list-group-item ' : true,
+							'has-warning': inscriptionForm.categorie.$dirty && !registerForm.categorie.$valid,
+							'has-success': inscriptionForm.categorie.$valid}">
+				<select name="categorie" ng-init="article.categorie.id = 1" ng-model="article.categorie.id" 
+						ng-options="categorie.id as categorie.nom for categorie in categories"
+						class="form-control">
 				</select>
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="text-center">
-				<a type="submit" ng-click="addArticle(article)"><button class="btn btn-success">Publier</button></a>
+				<input  type="submit" 
+						ng-disabled="inscriptionForm.$invalid" 
+						ng-click="addArticle(article)" 
+						class="btn btn-success" value="Publier"></input>
 			</div>
 		</div>
 		<div class="text-right">

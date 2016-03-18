@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,6 +26,7 @@ public class Article implements Serializable{
 	private Integer id;
 	private String nom;
 	private String chapeau;
+	@Column(length=1000)
 	private String contenu;
 	@Temporal(TemporalType.DATE)
 	private Date dateCreation;

@@ -7,7 +7,7 @@
 			<div class="list-group-item text-center">{{article.contenu}}</div>
 		</div>
 		<a href="#/articles/{{categoryName}}">Retour</a>
-		<a class="badge" href="#">delete</a>
+		<a class="badge" ng-click="deleteArticle()">delete</a>
 		
 		<div ng-repeat="c in commentaires">
 			<div>

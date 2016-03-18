@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,5 +42,11 @@ public class CommentaireServiceImpl implements CommentaireService {
 	@Override
 	public List<Commentaire> findByArticle(Integer id) {
 		return dao.findByArticleId(id);
+	}
+
+	@Override
+	@Transactional
+	public void deleteByArticle(Integer id) {
+		dao.deleteByArticleId(id);
 	}
 }

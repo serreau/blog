@@ -1,6 +1,6 @@
 var app = angular.module("app.Controllers");
 
-app.controller("ArticleDetailController", function($scope, $http, $routeParams, $resource, Server) {
+app.controller("ArticleDetailController", function($scope, $http, $routeParams, $location, $resource, Server) {
 	var categoryName = $routeParams.categoryName;
 	var articleId = $routeParams.articleId;
 	$scope.article = {};
@@ -8,6 +8,11 @@ app.controller("ArticleDetailController", function($scope, $http, $routeParams, 
 	
 	$scope.article = Server.getArticleDetail(articleId);
 	$scope.commentaires = Server.getCommentairesByArticleId(articleId);
+	
+	$scope.deleteArticle = function(){
+		Server.removeArticle(articleId);
+		$location.path('/articles/'+categoryName);
+	}
 
 	$scope.addComment = function(com){
 		var commentaire = {};
@@ -17,4 +22,5 @@ app.controller("ArticleDetailController", function($scope, $http, $routeParams, 
 		commentaire.article = {id:articleId};
 		$scope.commentaires.push(Server.saveComment(commentaire));
 	}
+	
 });

@@ -12,14 +12,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import fr.treeptik.model.Article;
-import fr.treeptik.model.Commentaire;
 import fr.treeptik.service.ArticleService;
+import fr.treeptik.service.CommentaireService;
 
 @Controller
 @RequestMapping(value="/article")
 public class ArticleController {
 	@Inject
 	public ArticleService articleService;
+	@Inject
+	public CommentaireService commentaireService;
 	
 	@RequestMapping(value="/add", consumes="application/json", method = RequestMethod.POST)
 	public @ResponseBody void addArticle(@RequestBody Article article){
@@ -38,4 +40,10 @@ public class ArticleController {
 	public @ResponseBody Article findOne(@PathVariable("articleId") Integer id){
 		return articleService.findOne(id);
 	}
+	@RequestMapping(value="/remove/articleId/{articleId}", 
+			method = RequestMethod.DELETE)
+	public @ResponseBody void removeOne(@PathVariable("articleId") Integer id){
+		commentaireService.deleteByArticle(id);
+		articleService.delete(id);
+}
 }

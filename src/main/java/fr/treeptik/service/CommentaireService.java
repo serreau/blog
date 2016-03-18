@@ -6,4 +6,5 @@ import fr.treeptik.model.Commentaire;
 
 public interface CommentaireService extends GenericService<Commentaire, Integer>{
 	List<Commentaire> findByArticle(Integer id);
+	void deleteByArticle(Integer id);
 }

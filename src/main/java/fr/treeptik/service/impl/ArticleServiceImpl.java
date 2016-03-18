@@ -5,12 +5,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.treeptik.dao.ArticleDAO;
 import fr.treeptik.model.Article;
-import fr.treeptik.model.Categorie;
 import fr.treeptik.service.ArticleService;
 
 @Service
@@ -40,6 +40,7 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
+	@Modifying 
 	@Transactional
 	public void delete(Integer id) {
 		dao.delete(id);

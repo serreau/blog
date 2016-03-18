@@ -4,13 +4,10 @@ app.controller("ArticleListController", function($scope, $http, $routeParams, Se
 	
 	$scope.categoryName = $routeParams.categoryName
 	$scope.articles = Server.getArticlesByCategories($routeParams.categoryName);
-
-//	$http({
-//		method : 'GET',
-//		url : 'http://localhost:8080/blog/article/list/category/nom/'+$routeParams.categoryName
-//	}).success(function(data, status, headers, config) {
-//		$scope.articles = data;
-//	}).error(function(data, status, headers, config) {
-//		console.log('request error oui oui oui');
-//	});
+	
+	$scope.deleteArticle = function(article){
+		Server.removeArticle(article.id);
+		var index = $scope.articles.indexOf(article);
+		$scope.articles.splice(index, 1);
+	}
 });
